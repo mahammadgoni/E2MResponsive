@@ -4,33 +4,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.BaseSetup.BaseSetUp;
+import com.CommonActions.LoginToAccount;
 
 public class EventQA extends BaseSetUp{
 	
 	
-	By emailId = By.id("et_email");
-	
-	By pass = By.id("et_password");
-	
-	By proceedBtn1 = By.id("tv_proceed");
-	
-	By proceedBtn2 = By.id("rl_proceed");
-	
-	By forgotPassBtn = By.id("tv_forgot_pswd");
-	
-	By submitBtn = By.id("tv_submit");
-	
-	By menu = By.id("btn_home");
+	By menuBtn = By.xpath("//button[@id='open-button']");
 	
 //	Event QA Elements
 	
-	By clickOnLive = By.xpath("//*[@content-desc='Live']");
+	By liveOption = By.xpath("//*[@class='menu-group']//a[2]");
 	
-	By clickOnEventQA = By.xpath("//*[@content-desc='Event QA']");
+	By socialWall = By.xpath("//span[contains(text(),'Social Wall')]");
 	
-	By typeAQuestion = By.id("edit_txt");
+	By clickOnEventQA = By.xpath("//span[contains(text(),'Event QA')]");
 	
-	By btnSubmit = By.id("tv_rightButton");
+	By typeAQuestion = By.xpath("//textarea[@id='txtQuestion']");
+	
+	By btnSubmit = By.xpath("//*[@id='btnQuestionPost']");
 	
 
 	public EventQA(WebDriver driver) {
@@ -38,61 +29,28 @@ public class EventQA extends BaseSetUp{
 
 	}
 	
-//	Common Login Method
 	
-	public void commonActivity(String userName,String password) throws InterruptedException{
+	public EventQA eventQA(String userName,String password,String Question) throws InterruptedException{
 		
-		System.out.println("Clicking on Your Email ");
-
-		waitForClickabilityOf(emailId);
-
-		driver.findElement(emailId).clear();
-
-		System.out.println("Entering the Email  :" + userName);
-
-		driver.findElement(emailId).sendKeys(userName);
+//		Initiating LoginToAccount Class
 		
-		Thread.sleep(2000);
+		LoginToAccount login = new LoginToAccount(driver);
 		
-		System.out.println("Clicking on Proceed Button ");
-
-		waitForClickabilityOf(proceedBtn1);
-
-		driver.findElement(proceedBtn1).click();
-		
-		Thread.sleep(2000);
-
-		System.out.println("Entering the Pin  :" + password);
-
-		waitForClickabilityOf(pass);
-		
-		driver.findElement(pass).clear();
-
-		driver.findElement(pass).sendKeys(password);
-		
-		Thread.sleep(2000);
-		
-		System.out.println("Clicking on Proceed Button ");
-
-		waitForClickabilityOf(proceedBtn2);
-
-		driver.findElement(proceedBtn2).click();
-		
-		Thread.sleep(2000);
+		login.commonLogin(userName, password);
 		
 		System.out.println("Clicking on Menu Option ");
 
-		waitForClickabilityOf(menu);
+		waitForClickabilityOf(menuBtn);
 
-		driver.findElement(menu).click();
+		driver.findElement(menuBtn).click();
 		
 		Thread.sleep(2000);
 		
 		System.out.println("Clicking on Live ");
 
-		waitForClickabilityOf(clickOnLive);
+		waitForClickabilityOf(liveOption);
 
-		driver.findElement(clickOnLive).click();
+		driver.findElement(liveOption).click();
 		
 		Thread.sleep(2000);
 		
@@ -101,13 +59,7 @@ public class EventQA extends BaseSetUp{
 		waitForClickabilityOf(clickOnEventQA);
 
 		driver.findElement(clickOnEventQA).click();
-		
-	}
-	
-	public EventQA eventQA(String userName,String password,String Question) throws InterruptedException{
-		
-		commonActivity(userName, password);
-		
+				
 		Thread.sleep(2000);
 		
 		System.out.println("Entering the Question");
