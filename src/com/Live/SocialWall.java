@@ -4,21 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.BaseSetup.BaseSetUp;
+import com.CommonActions.LoginToAccount;
 
 public class SocialWall extends BaseSetUp{
 	
 	
-	By emailId = By.id("txtUsername");
+	By menuBtn = By.xpath("//button[@id='open-button']");
 	
-	By pass = By.xpath("//*[@placeholder='Enter Password']");
-	
-	By proceedBtn1 = By.xpath("//a[@id='spnLogin']//span[contains(text(),'Proceed')]");
-	
-	By proceedBtn2 = By.xpath("//*[@id='spnPassword']");
-	
-	By liveOption = By.xpath("//div[@class='menu-group']//a[2]");
-	
-	By menu = By.xpath("//*[@id='open-button']");
+	By liveOption = By.xpath("//*[@class='menu-group']//a[2]");
 	
 	By socialWall = By.xpath("//span[contains(text(),'Social Wall')]");
 	
@@ -34,59 +27,22 @@ public class SocialWall extends BaseSetUp{
 
 	}
 	
-//	This Login Method will perform Login actions,Just need to call it in Method
-	
-	public void Login(String userName,String password) throws InterruptedException{
-		
-		System.out.println("Clicking on Your Email ");
-
-		waitForClickabilityOf(emailId);
-
-		driver.findElement(emailId).clear();
-
-		System.out.println("Entering the Email  :" + userName);
-
-		driver.findElement(emailId).sendKeys(userName);
-		
-		Thread.sleep(2000);
-		
-		System.out.println("Clicking on Proceed Button ");
-
-		waitForClickabilityOf(proceedBtn1);
-
-		driver.findElement(proceedBtn1).click();
-		
-		Thread.sleep(2000);
-
-		System.out.println("Entering the Pin  :" + password);
-
-		waitForClickabilityOf(pass);
-		
-		driver.findElement(pass).clear();
-
-		driver.findElement(pass).sendKeys(password);
-		
-		Thread.sleep(2000);
-		
-		System.out.println("Clicking on Proceed Button ");
-
-		waitForClickabilityOf(proceedBtn2);
-
-		driver.findElement(proceedBtn2).click();
-		
-	}
 	
 	public SocialWall socialWall(String userName,String password,String Comment) throws InterruptedException{
 		
-		Login(userName, password);
+//		Initiating LoginToAccount Class
+		
+		LoginToAccount login = new LoginToAccount(driver);
+		
+		login.commonLogin(userName, password);
 		
 		Thread.sleep(2000);
 		
 		System.out.println("Clicking on Menu to Expand Options");
 		
-		waitForClickabilityOf(menu);
+		waitForClickabilityOf(menuBtn);
 
-		driver.findElement(menu).click();
+		driver.findElement(menuBtn).click();
 		
 		Thread.sleep(2000);
 		
@@ -106,7 +62,7 @@ public class SocialWall extends BaseSetUp{
 				
 		Thread.sleep(2000);
 		
-		System.out.println("Entering Status Comment"+Comment);
+		System.out.println("Entering Status Comment "+Comment);
 		
 		waitForClickabilityOf(enterComment);
 
