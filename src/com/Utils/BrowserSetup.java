@@ -18,7 +18,7 @@ public class BrowserSetup {
 	
 //  This Will Store the Project Home Address
 	
-	String home = System.getProperty("user.dir");
+	protected String home = System.getProperty("user.dir");
 	
 
 

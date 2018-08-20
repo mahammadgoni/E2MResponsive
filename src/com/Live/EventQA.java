@@ -38,6 +38,8 @@ public class EventQA extends BaseSetUp{
 		
 		login.commonLogin(userName, password);
 		
+		Thread.sleep(2000);
+		
 		System.out.println("Clicking on Menu Option ");
 
 		waitForClickabilityOf(menuBtn);
