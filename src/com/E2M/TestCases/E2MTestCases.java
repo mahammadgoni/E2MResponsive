@@ -10,10 +10,13 @@ import org.testng.annotations.Test;
 
 import com.CommonActions.LoginToAccount;
 import com.Live.EventQA;
+import com.Live.OneToOneMessage;
+import com.Live.PhotoWall;
 import com.Live.SocialWall;
 import com.Utils.BrowserSetup;
 
 public class E2MTestCases extends BrowserSetup{
+
 	
 	
 //	 Browser Set Up Method
@@ -47,42 +50,68 @@ public class E2MTestCases extends BrowserSetup{
 	
 //	 Test Cases Methods
 
-	 @Test(priority = 1,alwaysRun=true)
-	 public void loginToAccountTest() throws InterruptedException, InvalidFormatException, IOException {
-	
-	 String EmailId = "brucewills@yopmail.com";
-	
-	 String Password = "#e2m321";
-	
-	 System.out.println("Executing : Login To Account Test");
-	
-	 new LoginToAccount(driver).loginToAccount(EmailId, Password);
-	
-	 }
+//	 @Test(priority = 1,alwaysRun=true)
+//	 public void loginToAccountTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Login To Account Test");
+//	
+//	 new LoginToAccount(driver).loginToAccount(EmailId, Password);
+//	
+//	 }
+//	 
+//	 @Test(priority = 2,alwaysRun=true)
+//	 public void socialWallPostTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Social Wall Post Test");
+//	
+//	 new SocialWall(driver).socialWall(EmailId, Password, "Load Testing Base");
+//	
+//	 }
+//	 
+//	 @Test(priority = 3,alwaysRun=true)
+//	 public void eventQAPostTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Event QA Post Test");
+//	
+//	 new EventQA(driver).eventQA(EmailId, Password, "Event Load Testing Base");
+//	
+//	 }
+//	 
+//	 @Test(priority = 4,alwaysRun=true)
+//	 public void oneToOneMessageTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : One To One Message Test");
+//	
+//	 new OneToOneMessage(driver).oneToOneMsg(EmailId, Password, "Event Load Testing Base");
+//	
+//	 }
 	 
-	 @Test(priority = 2,alwaysRun=true)
-	 public void socialWallPostTest() throws InterruptedException, InvalidFormatException, IOException {
+	 @Test(priority = 5,alwaysRun=true)
+	 public void photoWallTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = "brucewills@yopmail.com";
 	
 	 String Password = "#e2m321";
 	
-	 System.out.println("Executing : Social Wall Post Test");
+	 System.out.println("Executing : Photo Wall Test");
 	
-	 new SocialWall(driver).socialWall(EmailId, Password, "Load Testing Base");
-	
-	 }
-	 
-	 @Test(priority = 3,alwaysRun=true)
-	 public void eventQAPostTest() throws InterruptedException, InvalidFormatException, IOException {
-	
-	 String EmailId = "brucewills@yopmail.com";
-	
-	 String Password = "#e2m321";
-	
-	 System.out.println("Executing : Event QA Post Test");
-	
-	 new EventQA(driver).eventQA(EmailId, Password, "Event Load Testing Base");
+	 new PhotoWall(driver).photoUpload(EmailId, Password,home+"/Test Data/PhotoWall.jpg", "Responsive Photo Wall Test","This is Bullet, New Classic");
 	
 	 }
 	
