@@ -4,10 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.BaseSetup.BaseSetUp;
-import com.CommonActions.LoginToAccount;
 
 public class SocialWall extends BaseSetUp{
 	
+	By emailId = By.xpath("//*[@id='txtUsername']");
+	
+	By proceedBtn = By.xpath("//*[@id='spnLogin']");
+	
+	By pass = By.xpath("//*[@name='password_']");
+	
+	By signInBtn = By.xpath("//*[@id='spnPassword']");
 	
 	By menuBtn = By.xpath("//button[@id='open-button']");
 	
@@ -30,11 +36,39 @@ public class SocialWall extends BaseSetUp{
 	
 	public SocialWall socialWall(String userName,String password,String Comment) throws InterruptedException{
 		
-//		Initiating LoginToAccount Class
+		System.out.println("Entering Email id  is : "+userName);
 		
-		LoginToAccount login = new LoginToAccount(driver);
+		waitForClickabilityOf(emailId);
 		
-		login.commonLogin(userName, password);
+		driver.findElement(emailId).clear();
+		
+		driver.findElement(emailId).sendKeys(userName);
+		
+		Thread.sleep(1000);
+		
+		System.out.println("Clicking on Proceed Button");
+		
+		waitForClickabilityOf(proceedBtn);
+		
+		driver.findElement(proceedBtn).click();
+		
+		Thread.sleep(1000);
+				
+		System.out.println("Entering Password  is : "+password);
+		
+		waitForClickabilityOf(pass);
+		
+		driver.findElement(pass).clear();
+		
+		driver.findElement(pass).sendKeys(password);
+		
+		Thread.sleep(1000);
+		
+		System.out.println("Clicking on Sign in Button");
+		
+		waitForClickabilityOf(signInBtn);
+		
+		driver.findElement(signInBtn).click();
 		
 		Thread.sleep(2000);
 		

@@ -124,11 +124,17 @@ public class PhotoWall extends BaseSetUp{
 		
 		Thread.sleep(2000);
 		
-		System.out.println("Clicking On Like button to Like the post");
+		try {
+			
+			System.out.println("Clicking On Like button to Like the post");
 
-		waitForClickabilityOf(clickOnLike);
+			waitForClickabilityOf(clickOnLike);
 
-		driver.findElement(clickOnLike).click();
+			driver.findElement(clickOnLike).click();
+			
+		} catch (Exception e) {
+			
+		}
 		
 		Thread.sleep(2000);
 		
