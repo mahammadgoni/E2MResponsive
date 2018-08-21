@@ -9,10 +9,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.CommonActions.LoginToAccount;
+import com.Live.Attendees;
 import com.Live.EventQA;
 import com.Live.OneToOneMessage;
 import com.Live.PhotoWall;
 import com.Live.SocialWall;
+import com.Live.VideoWall;
 import com.Utils.BrowserSetup;
 
 public class E2MTestCases extends BrowserSetup{
@@ -101,17 +103,43 @@ public class E2MTestCases extends BrowserSetup{
 //	 new OneToOneMessage(driver).oneToOneMsg(EmailId, Password, "Event Load Testing Base");
 //	
 //	 }
+//	 
+//	 @Test(priority = 5,alwaysRun=true)
+//	 public void photoWallTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Photo Wall Test");
+//	
+//	 new PhotoWall(driver).photoUpload(EmailId, Password,home+"/Test Data/PhotoWall.jpg", "Responsive Photo Wall Test","This is Bullet, New Classic");
+//	
+//	 }
+//	 
+//	 @Test(priority = 6,alwaysRun=true)
+//	 public void videoWallTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Video Wall Test");
+//	
+//	 new VideoWall(driver).videoUpload(EmailId, Password,home+"/Test Data/VideoWall.mp4", "Responsive Video Wall Test");
+//	
+//	 }
 	 
-	 @Test(priority = 5,alwaysRun=true)
-	 public void photoWallTest() throws InterruptedException, InvalidFormatException, IOException {
+	 @Test(priority = 7,alwaysRun=true)
+	 public void attendeeDetailsTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = "brucewills@yopmail.com";
 	
 	 String Password = "#e2m321";
 	
-	 System.out.println("Executing : Photo Wall Test");
+	 System.out.println("Executing : Attendee Details Test");
 	
-	 new PhotoWall(driver).photoUpload(EmailId, Password,home+"/Test Data/PhotoWall.jpg", "Responsive Photo Wall Test","This is Bullet, New Classic");
+	 new Attendees(driver).attendeeDetails(EmailId, Password, "Responsive Attendee Details Test");
 	
 	 }
 	
