@@ -2,9 +2,12 @@ package com.Live;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import com.BaseSetup.BaseSetUp;
 
-public class EventQA extends BaseSetUp{
+public class SessionQA extends BaseSetUp{
+	
+	
 	
 	By emailId = By.xpath("//*[@id='txtUsername']");
 	
@@ -16,24 +19,27 @@ public class EventQA extends BaseSetUp{
 	
 	By menuBtn = By.xpath("//button[@id='open-button']");
 	
-//	Event QA Elements
-	
 	By liveOption = By.xpath("//*[@class='menu-group']//a[2]");
 	
-	By clickOnEventQA = By.xpath("//span[contains(text(),'Event QA')]");
+	By sessionQA = By.xpath("//span[contains(text(),'Session QA')]");
 	
-	By typeAQuestion = By.xpath("//textarea[@id='txtQuestion']");
+	By select1stSession = By.xpath("//div[@class='accordion-hld sessionlistcontainer']//ul[1]/li[1]");
 	
-	By btnSubmit = By.xpath("//*[@id='btnQuestionPost']");
+	By clickOnGeneral = By.xpath("//ul[@class='accordion']");
+	
+	By typeYourQuestion = By.xpath("//div[@class='cstm-input-group input-group full-txtarea']//textarea[@id='txtQuestion']");
+	
+	By submitBtn = By.xpath("//*[@id='btnQuestionPost']");
+
+	
 	
 
-	public EventQA(WebDriver driver) {
+	public SessionQA(WebDriver driver) {
 		super(driver);
-
+		
 	}
 	
-	
-	public EventQA eventQA(String userName,String password,String Question) throws InterruptedException{
+	public SessionQA sessioQA(String userName,String password,String SessionQA) throws InterruptedException{
 		
 		System.out.println("Entering Email id  is : "+userName);
 		
@@ -87,37 +93,51 @@ public class EventQA extends BaseSetUp{
 		
 		Thread.sleep(2000);
 		
-		System.out.println("Clicking on Event QA");
+		System.out.println("Clicking on Session QA");
 
-		waitForClickabilityOf(clickOnEventQA);
+		waitForClickabilityOf(sessionQA);
 
-		driver.findElement(clickOnEventQA).click();
+		driver.findElement(sessionQA).click();
 				
 		Thread.sleep(2000);
 		
-		System.out.println("Entering the Question");
+		System.out.println("Selecting the Session");
 
-		waitForClickabilityOf(typeAQuestion);
+		waitForClickabilityOf(select1stSession);
 
-		driver.findElement(typeAQuestion).clear();
-		
-		driver.findElement(typeAQuestion).sendKeys(Question);
-		
+		driver.findElement(select1stSession).click();
+				
 		Thread.sleep(2000);
 		
-		System.out.println("Clicking on Submit Button");
+		System.out.println("Clicking On General to ask the Question");
 
-		waitForClickabilityOf(btnSubmit);
+		waitForClickabilityOf(clickOnGeneral);
 
-		driver.findElement(btnSubmit).click();
-		
+		driver.findElement(clickOnGeneral).click();
+				
 		Thread.sleep(2000);
 		
-		System.out.println("Successfully Posted the Question");
+		System.out.println("Entering the Question for this Session?");
+
+		waitForClickabilityOf(typeYourQuestion);
+
+		driver.findElement(typeYourQuestion).sendKeys(SessionQA);
+				
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking On Submit Button to Submit the Question ");
+
+		waitForClickabilityOf(submitBtn);
+
+		driver.findElement(submitBtn).click();
+
+		Thread.sleep(2000);
+		
+		System.out.println("Successfully Submitted the Question");
 		
 		
 		
-		return new EventQA(driver);
+		return new SessionQA(driver);
 	}
 
 }
