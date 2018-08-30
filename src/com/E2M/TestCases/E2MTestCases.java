@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.Agenda.Schedule;
 import com.Agenda.Survey;
 import com.CommonActions.LoginToAccount;
 import com.Live.Attendees;
@@ -196,30 +197,56 @@ public class E2MTestCases extends BrowserSetup{
 //	 new Survey(driver).singlePoll(EmailId, Password);
 //	
 //	 }
+//	 
+//	 @Test(priority = 12,alwaysRun=true)
+//	 public void quizMapTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Quiz Map Test");
+//	
+//	 new PlayCenter(driver).quizMap(EmailId, Password);
+//	
+//	 }
+//	 
+//	 @Test(priority = 13,alwaysRun=true)
+//	 public void locationMapTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Location Map Test");
+//	
+//	 new PlayCenter(driver).locationMap(EmailId, Password);
+//	
+//	 }
+//	 
+//	 @Test(priority = 14,alwaysRun=true)
+//	 public void sessionListVerifyTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Session List Verify Test");
+//	
+//	 new Schedule(driver).time(EmailId, Password);
+//	
+//	 }
 	 
-	 @Test(priority = 12,alwaysRun=true)
-	 public void quizMapTest() throws InterruptedException, InvalidFormatException, IOException {
+	 @Test(priority = 15,alwaysRun=true)
+	 public void sessionBookmarkVerifyTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = "brucewills@yopmail.com";
 	
 	 String Password = "#e2m321";
 	
-	 System.out.println("Executing : Quiz Map Test");
+	 System.out.println("Executing : Session Bookmark Verify Test");
 	
-	 new PlayCenter(driver).quizMap(EmailId, Password);
-	
-	 }
-	 
-	 @Test(priority = 13,alwaysRun=true)
-	 public void locationMapTest() throws InterruptedException, InvalidFormatException, IOException {
-	
-	 String EmailId = "brucewills@yopmail.com";
-	
-	 String Password = "#e2m321";
-	
-	 System.out.println("Executing : Location Map Test");
-	
-	 new PlayCenter(driver).locationMap(EmailId, Password);
+	 new Schedule(driver).sessionBookmark(EmailId, Password);
 	
 	 }
 	
