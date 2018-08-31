@@ -21,7 +21,7 @@ public class Schedule extends BaseSetUp{
 	
 	By schedule = By.xpath("//a[@href='/Sessions/ConfigureTabs']//span[@class='submenu-title'][contains(text(),'Schedule')]");
 	
-//	Time Tab Elements
+//	Time Tab Bookmarks Elements
 	
 	By timeTab = By.xpath("//a[@href='/Sessions/Index/']");
 	
@@ -33,7 +33,11 @@ public class Schedule extends BaseSetUp{
 	
 	By sessionTitle = By.xpath("//a[@class='collapsableItem']//div[@class='ac-title-hld']");
 	
-	By bookmarkSession = By.xpath("//li[@class='icon-bookmark1-hld']");
+//	By bookmarkSession = By.xpath("//li[@class='icon-bookmark1-hld']");
+	
+	By bookmarkSession = By.xpath("//*[@class='icon-bookmark1 bmark-pupupbtn no-bookmark1 add-bookmark1']");
+	
+	By unBookmarkSession = By.xpath("//*[@class='icon-bookmark1 bmark-pupupbtn no-bookmark1']");
 	
 	By educationalPrgm = By.xpath("//a[@href='/Bookmark/Bookmarked_Session']//div[@class='exhibitors-block clearfix']");
 	
@@ -43,7 +47,17 @@ public class Schedule extends BaseSetUp{
 	
 	By resources = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[4]");
 	
+//	Time Tab Take Notes Elements
+	
 	By takeNote = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[5]");
+	
+	By notePlusSymbol = By.xpath("//*[@class='add-note']");
+	
+	By addNote = By.xpath("//*[@class='ac-title-hld']");
+	
+	By writeNote = By.xpath("//textarea[@id='txtnotes']");
+	
+	By saveNoteBtn = By.xpath("//input[@value='SAVE']");
 	
 	By askAQuestion = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[6]");
 	
@@ -181,33 +195,28 @@ public class Schedule extends BaseSetUp{
 			Thread.sleep(2000);
 			
 			System.out.println("Opening This Session");
-
-			waitForClickabilityOf(bookmarkSession);
-
-			driver.findElement(bookmarkSession).click();
 			
 			Thread.sleep(2000);
 			
 //			Storing the Message
 			
-//			String toastMsg = driver.findElement(By.xpath("//*[contains(text(),'Bookmark removed successfully')]")).getText();
-//			
-//			Thread.sleep(2000);
-//			
-//			if (toastMsg.equals("Bookmark removed successfully")) {
-//				
-//				waitForClickabilityOf(bookmark);
-//
-//				driver.findElement(bookmark).click();
-//				
-//				
-//			} else {
-//				
-//				
-//				System.out.println("Session is already Bookmarked");
-//				
-//
-//			}
+			boolean bkmrk = driver.findElement(bookmarkSession).isDisplayed();
+			
+			Thread.sleep(2000);
+			
+			if (bkmrk==true) {
+				
+				System.out.println("Session is already Bookmarked");
+								
+				
+			} else {
+				
+				waitForClickabilityOf(bookmark);
+
+				driver.findElement(bookmark).click();
+				
+
+			}
 			
 			Thread.sleep(2000);
 			
@@ -262,10 +271,6 @@ public class Schedule extends BaseSetUp{
 
 			}
 			
-			
-	
-	
-
 
 		return new Schedule(driver);
 
@@ -273,7 +278,7 @@ public class Schedule extends BaseSetUp{
 	
 //  	Session Rate Method
 	
-	   public Schedule sessionRate(String userName,String password){
+	public Schedule sessionRate(String userName,String password){
 		
 		
 	
@@ -281,6 +286,102 @@ public class Schedule extends BaseSetUp{
 	  return new Schedule(driver);
 	
    }
+	
+	
+//	Session Take Notes
+	
+	public Schedule sessionTakeNotes(String userName,String password,String AddNote) throws InterruptedException{
+		
+		commonSchedule(userName, password);
+		
+		System.out.println("Clicking on Time Tab");
+
+		waitForClickabilityOf(timeTab);
+
+		driver.findElement(timeTab).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Opening the Session");
+
+		waitForClickabilityOf(session1st);
+
+		driver.findElement(session1st).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Take Notes");
+
+		waitForClickabilityOf(takeNote);
+
+		driver.findElement(takeNote).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Add Notes");
+
+		waitForClickabilityOf(addNote);
+
+		driver.findElement(addNote).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking Plus Symbol to Add Notes");
+
+		waitForClickabilityOf(notePlusSymbol);
+
+		driver.findElement(notePlusSymbol).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Entering Notes");
+
+		waitForClickabilityOf(writeNote);
+
+		driver.findElement(writeNote).sendKeys(AddNote);		
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Save Button");
+
+		waitForClickabilityOf(saveNoteBtn);
+
+		driver.findElement(saveNoteBtn).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Add Notes");
+
+		waitForClickabilityOf(addNote);
+
+		driver.findElement(addNote).click();
+		
+		Thread.sleep(2000);
+		
+		String SessionName = driver.findElement(By.xpath("//h3[contains(text(),'"+AddNote+"')]")).getText();
+		
+		Thread.sleep(2000);
+		
+//		Verifying the Added Notes
+		
+		if (SessionName.equals(AddNote)) {
+			
+			System.out.println("Succesfully Added Session Notes ");
+			
+			
+		} else {
+			
+			
+			System.out.println("Failed To Add Session Notes");
+			
+
+		}
+		
+		
+		
+    	return new Schedule(driver);
+		
+	   }
 		
 		
 		
