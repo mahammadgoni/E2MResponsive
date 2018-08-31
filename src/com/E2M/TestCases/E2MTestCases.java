@@ -236,17 +236,30 @@ public class E2MTestCases extends BrowserSetup{
 //	 new Schedule(driver).time(EmailId, Password);
 //	
 //	 }
+//	 
+//	 @Test(priority = 15,alwaysRun=true)
+//	 public void sessionBookmarkVerifyTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Session Bookmark Verify Test");
+//	
+//	 new Schedule(driver).sessionBookmark(EmailId, Password);
+//	
+//	 }
 	 
-	 @Test(priority = 15,alwaysRun=true)
-	 public void sessionBookmarkVerifyTest() throws InterruptedException, InvalidFormatException, IOException {
+	 @Test(priority = 16,alwaysRun=true)
+	 public void sessionTakeNotesVerifyTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = "brucewills@yopmail.com";
 	
 	 String Password = "#e2m321";
 	
-	 System.out.println("Executing : Session Bookmark Verify Test");
+	 System.out.println("Executing : Session Take Notes Verify Test");
 	
-	 new Schedule(driver).sessionBookmark(EmailId, Password);
+	 new Schedule(driver).sessionTakeNotes(EmailId, Password,"Tonight is the Night");
 	
 	 }
 	
