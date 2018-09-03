@@ -59,7 +59,21 @@ public class Schedule extends BaseSetUp{
 	
 	By saveNoteBtn = By.xpath("//input[@value='SAVE']");
 	
+//	Time Tab Ask A Question
+	
 	By askAQuestion = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[6]");
+	
+	By clickOnGeneral = By.xpath("//*[contains(text(),'General')]");
+	
+	By typeUrQuestion = By.xpath("//*[@class='cstm-input-group input-group full-txtarea']//textarea[@id='txtQuestion']");
+	
+	By postQuestion = By.xpath("//*[@id='btnQuestionPost']");
+	
+	By upVote = By.xpath("//a[@class='upvt']");
+	
+	By comntQuestion = By.xpath("//textarea[@id='txtComment']");
+	
+	
 	
 	By vote = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[7]");
 	
@@ -162,7 +176,7 @@ public class Schedule extends BaseSetUp{
 		
 	}
 	
-//	    Session Rate Method
+//	    Session Bookmark Method
 	
 	public Schedule sessionBookmark(String userName,String password) throws InterruptedException{
 			
@@ -358,7 +372,7 @@ public class Schedule extends BaseSetUp{
 		
 		Thread.sleep(2000);
 		
-		String SessionName = driver.findElement(By.xpath("//h3[contains(text(),'"+AddNote+"')]")).getText();
+		String SessionName = driver.findElement(By.xpath("//*[contains(text(),'"+AddNote+"')]")).getText();
 		
 		Thread.sleep(2000);
 		
@@ -375,15 +389,144 @@ public class Schedule extends BaseSetUp{
 			System.out.println("Failed To Add Session Notes");
 			
 
-		}
-		
-		
+		}		
 		
     	return new Schedule(driver);
 		
 	   }
 		
+//		Ask a question Method 
+	
+	public Schedule askAQuestion(String userName,String password,String Question,String Comment) throws InterruptedException{
 		
+		commonSchedule(userName, password);
+		
+		System.out.println("Clicking on Time Tab");
+
+		waitForClickabilityOf(timeTab);
+
+		driver.findElement(timeTab).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Opening the Session");
+
+		waitForClickabilityOf(session1st);
+
+		driver.findElement(session1st).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Ask A Question");
+
+		waitForClickabilityOf(askAQuestion);
+
+		driver.findElement(askAQuestion).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on General Category");
+
+		waitForClickabilityOf(clickOnGeneral);
+
+		driver.findElement(clickOnGeneral).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Entering Question ");
+
+		waitForClickabilityOf(typeUrQuestion);
+
+		driver.findElement(typeUrQuestion).sendKeys(Question);		
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Posting the Question ");
+
+		waitForClickabilityOf(postQuestion);
+
+		driver.findElement(postQuestion).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Cicking on Posted Question ");
+
+		waitForClickabilityOf(By.xpath("//*[contains(text(),'"+Question+"')]"));
+		
+		Thread.sleep(2000);
+		
+		String QuestionName = driver.findElement(By.xpath("//*[contains(text(),'"+Question+"')]")).getText();
+		
+		Thread.sleep(2000);
+		
+//		Verifying the Added Notes
+		
+		if (QuestionName.equals(Question)) {
+			
+			System.out.println("Succesfully Asked A Question ");
+			
+			
+		} else {
+			
+			
+			System.out.println("Failed To Ask A Question");
+			
+
+		}
+		
+
+		driver.findElement(By.xpath("//a[contains(text(),'"+Question+"')]")).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking On Upvote the Question ");
+
+		waitForClickabilityOf(upVote);
+
+		driver.findElement(upVote).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Entering Comment on Question ");
+
+		waitForClickabilityOf(comntQuestion);
+
+		driver.findElement(comntQuestion).sendKeys(Comment);
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Posting the Comment ");
+
+		waitForClickabilityOf(postQuestion);
+
+		driver.findElement(postQuestion).click();
+		
+		Thread.sleep(2000);
+		
+		String CommentName = driver.findElement(By.xpath("//*[contains(text(),'"+Comment+"')]")).getText();
+		
+		Thread.sleep(2000);
+		
+//		Verifying the Added Notes
+		
+		if (CommentName.equals(Comment)) {
+			
+			System.out.println("Succesfully Added A Comment ");
+			
+			
+		} else {
+			
+			
+			System.out.println("Failed To Add Comment");
+			
+
+		}
+		
+		
+		
+		
+		return new Schedule(driver);
+	}
 		
 		
 		
