@@ -73,7 +73,7 @@ public class Schedule extends BaseSetUp{
 	
 	By comntQuestion = By.xpath("//textarea[@id='txtComment']");
 	
-	
+//	Time Tab Vote Elements
 	
 	By vote = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[7]");
 	
@@ -528,7 +528,80 @@ public class Schedule extends BaseSetUp{
 		return new Schedule(driver);
 	}
 		
+//	 Vote Submit
+	
+	public Schedule voteSubmit(String userName,String password,String Question,String Comment) throws InterruptedException{
 		
+		commonSchedule(userName, password);
+		
+		System.out.println("Clicking on Time Tab");
+
+		waitForClickabilityOf(timeTab);
+
+		driver.findElement(timeTab).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Opening the Session");
+
+		waitForClickabilityOf(session1st);
+
+		driver.findElement(session1st).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Vote");
+
+		waitForClickabilityOf(vote);
+
+		driver.findElement(vote).click();
+		
+		Thread.sleep(2000);
+		
+		
+	
+		return new Schedule(driver);
+	}
+	
+//	Resource Method
+	
+	public Schedule resourceVerify(String userName,String password,String Question,String Comment) throws InterruptedException{
+		
+		commonSchedule(userName, password);
+		
+		System.out.println("Clicking on Time Tab");
+
+		waitForClickabilityOf(timeTab);
+
+		driver.findElement(timeTab).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Opening the Session");
+
+		waitForClickabilityOf(session1st);
+
+		driver.findElement(session1st).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Resources");
+
+		waitForClickabilityOf(resources);
+
+		driver.findElement(resources).click();
+		
+		Thread.sleep(2000);
+		
+		
+	
+		return new Schedule(driver);
+	}
+	
+	
+	
+	
+	
 		
 //		
 //		System.out.println("Clicking On Add To Calender");
