@@ -18,6 +18,7 @@ import com.Live.PhotoWall;
 import com.Live.PlayCenter;
 import com.Live.SocialWall;
 import com.Live.VideoWall;
+import com.Me.MyProfile;
 import com.Utils.BrowserSetup;
 
 public class E2MTestCases extends BrowserSetup{
@@ -249,17 +250,43 @@ public class E2MTestCases extends BrowserSetup{
 //	 new Schedule(driver).sessionBookmark(EmailId, Password);
 //	
 //	 }
+//	 
+//	 @Test(priority = 16,alwaysRun=true)
+//	 public void sessionTakeNotesVerifyTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Session Take Notes Verify Test");
+//	
+//	 new Schedule(driver).sessionTakeNotes(EmailId, Password,"Tonight is the Night");
+//	
+//	 }
+//	 
+//	 @Test(priority = 17,alwaysRun=true)
+//	 public void askAQuestionAndAddCommentVerifyTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Ask A Question and Add Comment Verify Test");
+//	
+//	 new Schedule(driver).askAQuestion(EmailId, Password,"Is it Summer there?","is the Day?");
+//	
+//	 }
 	 
-	 @Test(priority = 16,alwaysRun=true)
-	 public void sessionTakeNotesVerifyTest() throws InterruptedException, InvalidFormatException, IOException {
+	 @Test(priority = 18,alwaysRun=true)
+	 public void updateMyProfileInfoTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = "brucewills@yopmail.com";
 	
 	 String Password = "#e2m321";
 	
-	 System.out.println("Executing : Session Take Notes Verify Test");
+	 System.out.println("Executing : Update My Profile Info Test");
 	
-	 new Schedule(driver).sessionTakeNotes(EmailId, Password,"Tonight is the Night");
+	 new MyProfile(driver).updateDetails(EmailId, Password, "Health Executive", "Stay Fit Crop");
 	
 	 }
 	
