@@ -11,6 +11,8 @@ import org.testng.annotations.Test;
 import com.Agenda.Schedule;
 import com.Agenda.Survey;
 import com.CommonActions.LoginToAccount;
+import com.Etc.AllEvents;
+import com.Etc.UsefullInfo;
 import com.Live.Attendees;
 import com.Live.EventQA;
 import com.Live.OneToOneMessage;
@@ -18,6 +20,8 @@ import com.Live.PhotoWall;
 import com.Live.PlayCenter;
 import com.Live.SocialWall;
 import com.Live.VideoWall;
+import com.Me.BusinessCard;
+import com.Me.Logout;
 import com.Me.MyProfile;
 import com.Utils.BrowserSetup;
 
@@ -276,17 +280,69 @@ public class E2MTestCases extends BrowserSetup{
 //	 new Schedule(driver).askAQuestion(EmailId, Password,"Is it Summer there?","is the Day?");
 //	
 //	 }
+//	 
+//	 @Test(priority = 18,alwaysRun=true)
+//	 public void updateMyProfileInfoTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Update My Profile Info Test");
+//	
+//	 new MyProfile(driver).updateDetails(EmailId, Password, "Health Executive", "Stay Fit Crop");
+//	
+//	 }
+//	 
+//	 @Test(priority = 19,alwaysRun=true)
+//	 public void verifyBusinessCardTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Verify Business Card Image Test");
+//	
+//	 new BusinessCard(driver).verifyBusinessCard(EmailId, Password);
+//	
+//	 }
+//	 
+//	 @Test(priority = 20,alwaysRun=true)
+//	 public void logoutTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Logout Test");
+//	
+//	 new Logout(driver).logout(EmailId, Password);
+//	
+//	 }
+//	 
+//	 @Test(priority = 21,alwaysRun=true)
+//	 public void allEventsTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : All Events Test");
+//	
+//	 new AllEvents(driver).verifyAllEvent(EmailId, Password);
+//	
+//	 }
 	 
-	 @Test(priority = 18,alwaysRun=true)
-	 public void updateMyProfileInfoTest() throws InterruptedException, InvalidFormatException, IOException {
+	 @Test(priority = 22,alwaysRun=true)
+	 public void verifyUsefulInfoTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = "brucewills@yopmail.com";
 	
 	 String Password = "#e2m321";
 	
-	 System.out.println("Executing : Update My Profile Info Test");
+	 System.out.println("Executing : Verify Useful Info Test");
 	
-	 new MyProfile(driver).updateDetails(EmailId, Password, "Health Executive", "Stay Fit Crop");
+	 new UsefullInfo(driver).verifyUsefulInfo(EmailId, Password);
 	
 	 }
 	
