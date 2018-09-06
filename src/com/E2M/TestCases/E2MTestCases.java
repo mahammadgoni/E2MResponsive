@@ -12,6 +12,7 @@ import com.Agenda.Schedule;
 import com.Agenda.Survey;
 import com.CommonActions.LoginToAccount;
 import com.Etc.AllEvents;
+import com.Etc.FloorMap;
 import com.Etc.UsefullInfo;
 import com.Live.Attendees;
 import com.Live.EventQA;
@@ -332,17 +333,43 @@ public class E2MTestCases extends BrowserSetup{
 //	 new AllEvents(driver).verifyAllEvent(EmailId, Password);
 //	
 //	 }
+//	 
+//	 @Test(priority = 22,alwaysRun=true)
+//	 public void verifyUsefulInfoTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Verify Useful Info Test");
+//	
+//	 new UsefullInfo(driver).verifyUsefulInfo(EmailId, Password);
+//	
+//	 }
+//	 
+//	 @Test(priority = 23,alwaysRun=true)
+//	 public void verifyFloorMapTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Verify Floor Map Test");
+//	
+//	 new FloorMap(driver).floorMapDetails(EmailId, Password);
+//	
+//	 }
 	 
-	 @Test(priority = 22,alwaysRun=true)
-	 public void verifyUsefulInfoTest() throws InterruptedException, InvalidFormatException, IOException {
+	 @Test(priority = 24,alwaysRun=true)
+	 public void verifyWayFinderTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = "brucewills@yopmail.com";
 	
 	 String Password = "#e2m321";
 	
-	 System.out.println("Executing : Verify Useful Info Test");
+	 System.out.println("Executing : Verify Way Finder Test");
 	
-	 new UsefullInfo(driver).verifyUsefulInfo(EmailId, Password);
+	 new FloorMap(driver).wayfinder(EmailId, Password);
 	
 	 }
 	
