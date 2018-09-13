@@ -8,8 +8,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.Agenda.Exhibitors;
 import com.Agenda.Schedule;
 import com.Agenda.Speakers;
+import com.Agenda.Sponsors;
 import com.Agenda.Survey;
 import com.CommonActions.LoginToAccount;
 import com.Etc.AllEvents;
@@ -387,17 +389,43 @@ public class E2MTestCases extends BrowserSetup{
 //	 new Home(driver).verifyHome(EmailId, Password);
 //	
 //	 }
+//	 
+//	 @Test(priority = 26,alwaysRun=true)
+//	 public void verifySpeakersTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Verify Speakers Test");
+//	
+//	 new Speakers(driver).verifySpeakers(EmailId, Password);
+//	
+//	 }
 	 
-	 @Test(priority = 26,alwaysRun=true)
-	 public void verifySpeakersTest() throws InterruptedException, InvalidFormatException, IOException {
+	 @Test(priority = 27,alwaysRun=true)
+	 public void verifyExhibitorsTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = "brucewills@yopmail.com";
 	
 	 String Password = "#e2m321";
 	
-	 System.out.println("Executing : Verify Speakers Test");
+	 System.out.println("Executing : Verify Exhibitors Test");
 	
-	 new Speakers(driver).verifySpeakers(EmailId, Password);
+	 new Exhibitors(driver).verifyExhibitors(EmailId, Password);
+	
+	 }
+	 
+	 @Test(priority = 28,alwaysRun=true)
+	 public void verifySponsorsTest() throws InterruptedException, InvalidFormatException, IOException {
+	
+	 String EmailId = "brucewills@yopmail.com";
+	
+	 String Password = "#e2m321";
+	
+	 System.out.println("Executing : Verify Sponsors Test");
+	
+	 new Sponsors(driver).verifySponsors(EmailId, Password);
 	
 	 }
 	
