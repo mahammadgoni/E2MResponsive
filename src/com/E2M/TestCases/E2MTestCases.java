@@ -9,10 +9,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.Agenda.Schedule;
+import com.Agenda.Speakers;
 import com.Agenda.Survey;
 import com.CommonActions.LoginToAccount;
 import com.Etc.AllEvents;
 import com.Etc.FloorMap;
+import com.Etc.Home;
 import com.Etc.UsefullInfo;
 import com.Live.Attendees;
 import com.Live.EventQA;
@@ -359,17 +361,43 @@ public class E2MTestCases extends BrowserSetup{
 //	 new FloorMap(driver).floorMapDetails(EmailId, Password);
 //	
 //	 }
+//	 
+//	 @Test(priority = 24,alwaysRun=true)
+//	 public void verifyWayFinderTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Verify Way Finder Test");
+//	
+//	 new FloorMap(driver).wayfinder(EmailId, Password);
+//	
+//	 }
+//	  
+//	 @Test(priority = 25,alwaysRun=true)
+//	 public void verifyHomeIconsTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = "brucewills@yopmail.com";
+//	
+//	 String Password = "#e2m321";
+//	
+//	 System.out.println("Executing : Verify Home Icons Test");
+//	
+//	 new Home(driver).verifyHome(EmailId, Password);
+//	
+//	 }
 	 
-	 @Test(priority = 24,alwaysRun=true)
-	 public void verifyWayFinderTest() throws InterruptedException, InvalidFormatException, IOException {
+	 @Test(priority = 26,alwaysRun=true)
+	 public void verifySpeakersTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = "brucewills@yopmail.com";
 	
 	 String Password = "#e2m321";
 	
-	 System.out.println("Executing : Verify Way Finder Test");
+	 System.out.println("Executing : Verify Speakers Test");
 	
-	 new FloorMap(driver).wayfinder(EmailId, Password);
+	 new Speakers(driver).verifySpeakers(EmailId, Password);
 	
 	 }
 	
