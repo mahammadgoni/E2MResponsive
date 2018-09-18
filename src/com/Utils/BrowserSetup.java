@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class BrowserSetup {
+public class BrowserSetup extends ReadAndWriteTestData{
 	
 	protected static WebDriver driver;
 	
@@ -23,16 +23,17 @@ public class BrowserSetup {
 
 
 	protected void openBrowser() throws InvalidFormatException, IOException {
+				
+		String e2mURL = getCellData(1, 1);
 		
-		String e2mURL = "https://web.event2mobile.com/";
+		String BrowserName = getCellData(1, 0);
 		
-		String BrowserName = "Chrome";
-		
-		String geckoPath =  "";
+		String geckoPath =  getCellData(1, 2);
 
-		String firefoxLogPath =  "";
+		String firefoxLogPath =  getCellData(1, 4);
 		
-		String chromeDrPath =  "/Browser Driver/chromedriver";
+		String chromeDrPath =  getCellData(1, 3);
+		
 		
 //		System.out.println(BrowserName);
 		
