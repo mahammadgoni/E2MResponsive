@@ -2,6 +2,8 @@ package com.Agenda;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import com.BaseSetup.BaseSetUp;
 import com.CommonActions.LoginToAccount;
@@ -41,9 +43,23 @@ public class Schedule extends BaseSetUp{
 	
 	By educationalPrgm = By.xpath("//a[@href='/Bookmark/Bookmarked_Session']//div[@class='exhibitors-block clearfix']");
 	
-	
+//	Rate Elements
 	
 	By rate = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[3]");
+	
+	By rateGroup = By.xpath("//div[@class='track-list-hld']");
+	
+	By rating1st = By.xpath("//div[@id='ratingPopup']//ul//li[1]/select");
+	
+	By rating2nd = By.xpath("//div[@id='ratingPopup']//ul//li[2]/select");
+	
+	By rateComment = By.xpath("//textarea[@id='txtRateComment']");
+	
+	By rateSubmitBtn = By.xpath("//input[@value='Submit']");
+	
+	By message = By.xpath("//div[@class='alrt-msg']");
+	
+	
 	
 	By resources = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[4]");
 	
@@ -77,15 +93,41 @@ public class Schedule extends BaseSetUp{
 	
 	By vote = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[7]");
 	
+	By listOfPoll = By.xpath("//iframe[@id='zino_iframe']");
+	
+	By dropdownPoll = By.xpath("//*[@id='gvSurvey_lnkBtn_0']");
+	
+//	By dropdownPoll = By.xpath("//*[contains(text(),'Automation Dropdown Poll Testing')]");
+	
+	By selectAnOption = By.xpath("//*[@id='DropDownList1']");
+	
+	By optionOne = By.xpath("//*[@id='DropDownList1']/option[1]");
+	
+	By selectAnOption1 = By.xpath("//*[@id='DropDownList2']");
+	
+	By btnSubmit = By.id("BtnSave");
+	
+	By thanksMsg = By.id("tv_thanks");
+	
+	By morePolls = By.id("BtnBack");
+	
+	
+	
 	By checkIn = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[8]");
 	
-	By addToAgenda = By.xpath("//div[@class='ac-iconinlie-hld']/ul/li[9]");
+//	My Agenda Verify
+	
+	By addToAgenda = By.xpath("//a[@title='Add To Agenda']");
+	
+	By removeFromAgenda = By.xpath("//a[@title='Remove from Agenda']");
+	
+	By myAgenda = By.xpath("//a[@href='/Sessions/MyAgenda/']");
 	
 	
 	
 	By trackTab = By.xpath("//a[@href='/Sessions/Tracks/']");
 	
-	By myAgenda = By.xpath("//a[@href='/Sessions/MyAgenda/']");
+
 
 	
 	
@@ -176,7 +218,7 @@ public class Schedule extends BaseSetUp{
 		
 	}
 	
-//	    Session Bookmark Method
+//	Session Bookmark Method
 	
 	public Schedule sessionBookmark(String userName,String password) throws InterruptedException{
 			
@@ -290,9 +332,131 @@ public class Schedule extends BaseSetUp{
 
 }
 	
-//  	Session Rate Method
+//  Session Rate Method
 	
-	public Schedule sessionRate(String userName,String password){
+	public Schedule sessionRate(String userName,String password,String RateComment) throws InterruptedException{
+		
+		commonSchedule(userName, password);
+		
+		System.out.println("Clicking on Time Tab");
+
+		waitForClickabilityOf(timeTab);
+
+		driver.findElement(timeTab).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Opening the Session");
+
+		waitForClickabilityOf(session1st);
+
+		driver.findElement(session1st).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Rate");
+
+		waitForClickabilityOf(rate);
+
+		driver.findElement(rate).click();
+		
+		Thread.sleep(5000);
+		
+		System.out.println("Clicking on Rate Group");
+
+		waitForClickabilityOf(rateGroup);
+
+		driver.findElement(rateGroup).click();
+		
+		Thread.sleep(5000);
+		
+//		Checking for 1st Rating
+		
+		boolean Rating1st = driver.findElement(rating1st).isDisplayed();
+		
+		Thread.sleep(5000);
+		
+		if (Rating1st==true) {
+			
+			System.out.println("Giving 1st Section Rating");
+			
+			Select option = new Select(driver.findElement(rating1st));
+			
+			option.selectByIndex(4);
+			
+		} else {
+			
+			System.out.println("No Rating Section");
+
+		}
+		
+		Thread.sleep(5000);
+		
+		try {
+			
+			
+//			Checking for 2nd Rating
+			
+			boolean Rating2nd = driver.findElement(rating2nd).isDisplayed();
+			
+			Thread.sleep(5000);
+			
+			if (Rating2nd==true) {
+				
+				System.out.println("Giving 2nd Section Rating");
+				
+				Select option = new Select(driver.findElement(rating2nd));
+				
+				option.selectByIndex(4);
+				
+			} else {
+				
+				System.out.println("No Rating Section");
+
+			}
+			
+		} catch (Exception e) {
+			
+		}
+		
+		Thread.sleep(5000);
+		
+		System.out.println("Entering Rating Comment ");
+
+		waitForClickabilityOf(rateComment);
+		
+		driver.findElement(rateComment).clear();
+
+		driver.findElement(rateComment).sendKeys(RateComment);
+		
+		Thread.sleep(5000);
+		
+		System.out.println("Clicking on Rate Submit Button");
+
+		waitForClickabilityOf(rateSubmitBtn);
+
+		driver.findElement(rateSubmitBtn).click();
+				
+//		Verifying the Rate Submission
+		
+		String rateName = driver.findElement(message).getText();
+		
+		System.out.println(rateName);
+		
+		Thread.sleep(5000);
+		
+		if (rateName.equals("Rate submitted successfully")) {
+			
+			System.out.println("Succesfully Verified Session Rating ");
+			
+			
+		} else {
+			
+			
+			System.out.println("Failed To Verify Session rating");
+			
+
+		}
 		
 		
 	
@@ -300,8 +464,7 @@ public class Schedule extends BaseSetUp{
 	  return new Schedule(driver);
 	
    }
-	
-	
+		
 //	Session Take Notes
 	
 	public Schedule sessionTakeNotes(String userName,String password,String AddNote) throws InterruptedException{
@@ -395,7 +558,7 @@ public class Schedule extends BaseSetUp{
 		
 	   }
 		
-//		Ask a question Method 
+//	Ask a question Method 
 	
 	public Schedule askAQuestion(String userName,String password,String Question,String Comment) throws InterruptedException{
 		
@@ -528,9 +691,9 @@ public class Schedule extends BaseSetUp{
 		return new Schedule(driver);
 	}
 		
-//	 Vote Submit
+//	Vote Submit
 	
-	public Schedule voteSubmit(String userName,String password,String Question,String Comment) throws InterruptedException{
+	public Schedule voteSubmit(String userName,String password) throws InterruptedException{
 		
 		commonSchedule(userName, password);
 		
@@ -556,7 +719,67 @@ public class Schedule extends BaseSetUp{
 
 		driver.findElement(vote).click();
 		
+		Thread.sleep(5000);
+		
+		driver.switchTo().frame("zino_iframe");
+		
 		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Drop Down Poll Survey ");
+
+		waitForClickabilityOf(dropdownPoll);
+
+		driver.findElement(dropdownPoll).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Select An Option ");
+
+		waitForClickabilityOf(selectAnOption);
+		
+		WebElement option = driver.findElement(selectAnOption);
+		
+		option.click();
+
+		Select option1 = new Select(driver.findElement(selectAnOption));
+		
+		option1.selectByIndex(1);
+				
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Select An Option ");
+
+		waitForClickabilityOf(selectAnOption1);
+
+		Select option2 = new Select(driver.findElement(selectAnOption1));
+		
+		option2.selectByIndex(2);
+				
+		Thread.sleep(2000);
+		
+		System.out.println("Clicking on Submit Button ");
+
+		waitForClickabilityOf(btnSubmit);
+
+		driver.findElement(btnSubmit).click();
+		
+		Thread.sleep(4000);
+		
+		String Msg = driver.findElement(morePolls).getText();
+		
+//		Verifying Condition
+		
+		Thread.sleep(4000);
+		
+		if (Msg.equals("More Polls")) {
+			
+			System.out.println("Successfully Verified the Vote Option");
+			
+		} else {
+			
+			System.out.println("Failed to Verify the Vote Option");
+
+		}
 		
 		
 	
@@ -598,139 +821,97 @@ public class Schedule extends BaseSetUp{
 		return new Schedule(driver);
 	}
 	
+//	Verify My Agenda
 	
+	public Schedule myAgenda(String userName,String password) throws InterruptedException{
+		
+		commonSchedule(userName, password);
+		
+		System.out.println("Clicking on Time Tab");
+
+		waitForClickabilityOf(timeTab);
+
+		driver.findElement(timeTab).click();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Opening the Session");
+
+		waitForClickabilityOf(session1st);
+
+		driver.findElement(session1st).click();
+		
+		Thread.sleep(2000);
+		
+//		Storing the Session Name
+		
+		System.out.println("Storing the Session Name");
+
+		waitForClickabilityOf(sessionTitle);
+
+		String SessionTitle = driver.findElement(sessionTitle).getText();
+					
+		Thread.sleep(2000);
+		
+		System.out.println("Opening This Session");
+		
+		Thread.sleep(2000);
+		
+//		Storing the Message
+		
+		boolean Agenda = driver.findElement(addToAgenda).isDisplayed();
+		
+		System.out.println(Agenda);
+		
+		if (Agenda==true) {
+			
+			System.out.println("Clicked on Add To Agenda");
+
+			driver.findElement(addToAgenda).click();
+							
+			
+		} else {
+			
+			System.out.println("It's Already Added to Agenda");
+			
+
+		}
+		
+		Thread.sleep(5000);
+		
+		System.out.println("Clicking On My Agenda Tab");
+
+		waitForClickabilityOf(myAgenda);
+
+		driver.findElement(myAgenda).click();
+		
+		Thread.sleep(5000);
+		
+		boolean sessionName = driver.findElement(By.xpath("//*[contains(text(),'"+SessionTitle+"')]")).isDisplayed();
+		
+		Thread.sleep(2000);
+		
+		if (sessionName==true) {
+			
+			System.out.println("Succesfully Verified My Agenda ");
+			
+			
+		} else {
+			
+			
+			System.out.println("Failed To Verify My Agenda");
+			
+
+		}
+		
+		
+		return new Schedule(driver);
+		
+		
+	}
 	
 	
 	
 		
-//		
-//		System.out.println("Clicking On Add To Calender");
-//
-//		waitForClickabilityOf(addToCalender);
-//
-//		driver.findElement(addToCalender).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking On Rate");
-//
-//		waitForClickabilityOf(rate);
-//
-//		driver.findElement(rate).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking On Close Rate Option");
-//
-//		waitForClickabilityOf(cancleRate);
-//
-//		driver.findElement(cancleRate).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		waitForClickabilityOf(cancleRate);
-//
-//		driver.findElement(cancleRate).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking On Take Notes");
-//
-//		waitForClickabilityOf(takeNotes);
-//
-//		driver.findElement(takeNotes).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Adding Notes");
-//
-//		waitForClickabilityOf(addNote);
-//
-//		driver.findElement(addNote).clear();
-//		
-//		driver.findElement(addNote).sendKeys(Notes);
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking On Right Simbol to Save Note");
-//
-//		waitForClickabilityOf(saveNote);
-//
-//		driver.findElement(saveNote).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking On Add to Agenda");
-//
-//		waitForClickabilityOf(addToAgenda);
-//
-//		driver.findElement(addToAgenda).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking On Vote");
-//
-//		waitForClickabilityOf(vote);
-//
-//		driver.findElement(vote).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking Back Button");
-//
-//		((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.BACK);
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking On Ask Question");
-//
-//		waitForClickabilityOf(askAQuestion);
-//
-//		driver.findElement(askAQuestion).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Addding New Question");
-//
-//		waitForClickabilityOf(addQuestion);
-//
-//		driver.findElement(addQuestion).clear();
-//		
-//		driver.findElement(addQuestion).sendKeys(Question);
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking On Ask to Add Question");
-//
-//		waitForClickabilityOf(saveQuestion);
-//
-//		driver.findElement(saveQuestion).click();
-//		
-//		Thread.sleep(2000);
-//		
-//		System.out.println("Clicking On Close Rate Option");
-//		
-//		boolean CancleBtn = driver.findElement(cancleRate).isDisplayed();
-//
-//		driver.findElement(cancleRate).click();
-//		
-//		Thread.sleep(2000);		
-//		
-//		if (CancleBtn==true) {
-//			
-//			System.out.println("Successfully Verified All Schedule Time Elements");
-//			
-//		} else {
-//			
-//			System.out.println("Failed to Verify All Schedule Time Elements");
-//
-//		}
-//			
-//		
-//		
-//		return new Schedule(driver);
-//		
-//	}
-	
 
 }
