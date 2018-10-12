@@ -117,7 +117,9 @@ public class Schedule extends BaseSetUp{
 	
 //	My Agenda Verify
 	
-	By addToAgenda = By.xpath("//a[@title='Add To Agenda']");
+//	By addToAgenda = By.xpath("//a[@class='addagendaclass']");
+	
+	By addToAgenda = By.xpath("//*[@data-original-title='Add To Agenda']");
 	
 	By removeFromAgenda = By.xpath("//a[@title='Remove from Agenda']");
 	
@@ -861,7 +863,7 @@ public class Schedule extends BaseSetUp{
 		
 		boolean Agenda = driver.findElement(addToAgenda).isDisplayed();
 		
-		System.out.println(Agenda);
+		System.out.println("Is Add To Agenda Visible"+Agenda);
 		
 		if (Agenda==true) {
 			
