@@ -25,6 +25,7 @@ import com.Live.LeaderBoard;
 import com.Live.OneToOneMessage;
 import com.Live.PhotoWall;
 import com.Live.PlayCenter;
+import com.Live.SocialLink;
 import com.Live.SocialWall;
 import com.Live.VideoWall;
 import com.Me.BusinessCard;
@@ -479,16 +480,29 @@ public class E2MTestCases extends BrowserSetup{
 //	
 //	 }
 	 
+//	 @Test(priority = 28,alwaysRun=true)
+//	 public void verifyLeaderBoardTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = getCellData(1, 5);
+//			
+//	 String Password = getCellData(1, 6);
+//	
+//	 System.out.println("Executing : Verify Leader Board Test");
+//	
+//	 new LeaderBoard(driver).leaderBoardPoints(EmailId, Password);
+//	
+//	 }
+	 
 	 @Test(priority = 28,alwaysRun=true)
-	 public void verifyLeaderBoardTest() throws InterruptedException, InvalidFormatException, IOException {
+	 public void verifySocialLinkTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = getCellData(1, 5);
 			
 	 String Password = getCellData(1, 6);
 	
-	 System.out.println("Executing : Verify Leader Board Test");
+	 System.out.println("Executing : Verify Social Link Test");
 	
-	 new LeaderBoard(driver).leaderBoardPoints(EmailId, Password);
+	 new SocialLink(driver).verifySocialLink(EmailId, Password);
 	
 	 }
 	

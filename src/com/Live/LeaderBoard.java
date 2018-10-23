@@ -73,7 +73,7 @@ public class LeaderBoard extends BaseSetUp{
 		
 		String UserPoints = driver.findElement(user1stPoint).getText();
 		
-		int Up = Integer.parseInt(UserPoints);
+		int Up = Integer.parseInt(UserPoints.replaceAll("[^0-9]", ""));
 		
 		System.out.println("Total User Score is  "+Up);
 		
@@ -103,7 +103,7 @@ public class LeaderBoard extends BaseSetUp{
 		
 		String UserScore = driver.findElement(myPoints).getText();
 		
-		int Up1 = Integer.parseInt(UserScore);
+		int Up1 = Integer.parseInt(UserScore.replaceAll("[^0-9]", ""));
 		
 		System.out.println("Total User Score is  "+Up1);
 		
