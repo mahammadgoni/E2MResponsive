@@ -21,6 +21,7 @@ import com.Etc.Home;
 import com.Etc.UsefullInfo;
 import com.Live.Attendees;
 import com.Live.EventQA;
+import com.Live.LeaderBoard;
 import com.Live.OneToOneMessage;
 import com.Live.PhotoWall;
 import com.Live.PlayCenter;
@@ -322,18 +323,18 @@ public class E2MTestCases extends BrowserSetup{
 //	
 //	 }
 	 
-	 @Test(priority = 20,alwaysRun=true)
-	 public void myAgendaTest() throws InterruptedException, InvalidFormatException, IOException {
-	
-	 String EmailId = getCellData(1, 5);
-			
-	 String Password = getCellData(1, 6);
-	
-	 System.out.println("Executing : My Agenda Test");
-	
-	 new Schedule(driver).myAgenda(EmailId, Password);
-	
-	 }
+//	 @Test(priority = 20,alwaysRun=true)
+//	 public void myAgendaTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = getCellData(1, 5);
+//			
+//	 String Password = getCellData(1, 6);
+//	
+//	 System.out.println("Executing : My Agenda Test");
+//	
+//	 new Schedule(driver).myAgenda(EmailId, Password);
+//	
+//	 }
 	 
 //	 @Test(priority = 18,alwaysRun=true)
 //	 public void updateMyProfileInfoTest() throws InterruptedException, InvalidFormatException, IOException {
@@ -477,6 +478,19 @@ public class E2MTestCases extends BrowserSetup{
 //	 new Sponsors(driver).verifySponsors(EmailId, Password);
 //	
 //	 }
+	 
+	 @Test(priority = 28,alwaysRun=true)
+	 public void verifyLeaderBoardTest() throws InterruptedException, InvalidFormatException, IOException {
+	
+	 String EmailId = getCellData(1, 5);
+			
+	 String Password = getCellData(1, 6);
+	
+	 System.out.println("Executing : Verify Leader Board Test");
+	
+	 new LeaderBoard(driver).leaderBoardPoints(EmailId, Password);
+	
+	 }
 	
 	
 
