@@ -18,6 +18,7 @@ import com.CommonActions.LoginToAccount;
 import com.Etc.AllEvents;
 import com.Etc.FloorMap;
 import com.Etc.Home;
+import com.Etc.Resources;
 import com.Etc.UsefullInfo;
 import com.Live.Attendees;
 import com.Live.EventQA;
@@ -493,18 +494,33 @@ public class E2MTestCases extends BrowserSetup{
 //	
 //	 }
 	 
+//	 @Test(priority = 28,alwaysRun=true)
+//	 public void verifySocialLinkTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = getCellData(1, 5);
+//			
+//	 String Password = getCellData(1, 6);
+//	
+//	 System.out.println("Executing : Verify Social Link Test");
+//	
+//	 new SocialLink(driver).verifySocialLink(EmailId, Password);
+//	
+//	 }
+	 
+	
 	 @Test(priority = 28,alwaysRun=true)
-	 public void verifySocialLinkTest() throws InterruptedException, InvalidFormatException, IOException {
+	 public void verifyResourcesTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = getCellData(1, 5);
 			
 	 String Password = getCellData(1, 6);
 	
-	 System.out.println("Executing : Verify Social Link Test");
+	 System.out.println("Executing : Verify Resources Test");
 	
-	 new SocialLink(driver).verifySocialLink(EmailId, Password);
+	 new Resources(driver).verifyResources(EmailId, Password);
 	
 	 }
+	 
 	
 	
 
