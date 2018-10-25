@@ -25,6 +25,15 @@ public class LocationAndTiming extends BaseSetUp{
 	
 	By backToMap = By.xpath("//a[@id='back-map']");
 	
+	By opendLocName = By.xpath("//div[@class='location-name']/h2[1]");
+	
+	By opendLocAdrs = By.xpath("//div[@class='location-name']/h2[2]");
+	
+	By localTime = By.xpath("//div[@class='time-show']");
+	
+	
+	
+	
 	
 
 	public LocationAndTiming(WebDriver driver) {
@@ -82,7 +91,19 @@ public class LocationAndTiming extends BaseSetUp{
 		
 		Thread.sleep(2000);
 		
+		String OpenLocNm = driver.findElement(opendLocName).getText();
 		
+		Thread.sleep(2000);
+		
+		String OpenLocAd = driver.findElement(opendLocAdrs).getText();
+		
+		Thread.sleep(2000);
+		
+		String OpenLocTm = driver.findElement(localTime).getText();
+		
+		Thread.sleep(2000);
+		
+		System.out.println("Event Location Name is : "+OpenLocNm+"\n" + "Event Location Address is : "+OpenLocAd+"\n" +" Event Time is : "+OpenLocTm);
 		
 		
 		

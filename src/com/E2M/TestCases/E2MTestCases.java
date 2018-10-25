@@ -18,6 +18,7 @@ import com.CommonActions.LoginToAccount;
 import com.Etc.AllEvents;
 import com.Etc.FloorMap;
 import com.Etc.Home;
+import com.Etc.LocationAndTiming;
 import com.Etc.Resources;
 import com.Etc.UsefullInfo;
 import com.Live.Attendees;
@@ -508,16 +509,29 @@ public class E2MTestCases extends BrowserSetup{
 //	 }
 	 
 	
+//	 @Test(priority = 28,alwaysRun=true)
+//	 public void verifyResourcesTest() throws InterruptedException, InvalidFormatException, IOException {
+//	
+//	 String EmailId = getCellData(1, 5);
+//			
+//	 String Password = getCellData(1, 6);
+//	
+//	 System.out.println("Executing : Verify Resources Test");
+//	
+//	 new Resources(driver).verifyResources(EmailId, Password);
+//	
+//	 }
+	 
 	 @Test(priority = 28,alwaysRun=true)
-	 public void verifyResourcesTest() throws InterruptedException, InvalidFormatException, IOException {
+	 public void verifyLocationAndTimingTest() throws InterruptedException, InvalidFormatException, IOException {
 	
 	 String EmailId = getCellData(1, 5);
 			
 	 String Password = getCellData(1, 6);
 	
-	 System.out.println("Executing : Verify Resources Test");
+	 System.out.println("Executing : Verify Location and Timing Test");
 	
-	 new Resources(driver).verifyResources(EmailId, Password);
+	 new LocationAndTiming(driver).verifyLocationAndTiming(EmailId, Password);
 	
 	 }
 	 
